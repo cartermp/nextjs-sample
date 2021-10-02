@@ -4,7 +4,7 @@ import { people } from './../data'
 import { requestTracer } from '../../../instrumentation-setup/lambda-wrapper'
 
 const handler = (request: VercelRequest, response: VercelResponse) => {
-    requestTracer.startActiveSpan('request', (span) => {
+    requestTracer.startActiveSpan('request', span => {
         span.setStatus({
           code: SpanStatusCode.OK,
         })

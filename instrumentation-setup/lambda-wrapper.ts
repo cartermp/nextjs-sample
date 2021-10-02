@@ -9,11 +9,7 @@ provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()))
 provider.register();
 
 registerInstrumentations({
-  instrumentations: [
-    new AwsLambdaInstrumentation({
-        // see under for available configuration
-    })
-  ],
+  instrumentations: [new AwsLambdaInstrumentation()],
 });
 
 export const requestTracer = opentelemetry.trace.getTracer('request-tracer')
