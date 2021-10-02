@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@opentelemetry/api": "^1.0.3",
+    "@opentelemetry/auto-instrumentations-node": "^0.25.0",
+    "@opentelemetry/instrumentation-aws-lambda": "^0.26.0",
+    "@opentelemetry/sdk-node": "^0.25.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
