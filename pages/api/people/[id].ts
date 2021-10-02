@@ -5,9 +5,14 @@ export default (request: VercelRequest, response: VercelResponse) => {
     const id = request.query["id"]
     if (typeof id !== "string") {
         response.status(404).send(`Bad request: ${request.query}`)
-        return;
+        return
     }
 
     const filtered = people.filter(p => p.id === id)
+    if (!filtered.length) {
+        response.status(404).send(`Bad ID: ${id}`)
+        return
+    }
+
     response.status(200).send(filtered);
 };

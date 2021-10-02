@@ -5,6 +5,6 @@ export default (request: VercelRequest, response: VercelResponse) => {
   if (typeof qry === "string") {
     response.status(200).send(`Hello ${qry}`)
   } else {
-    response.status(404).send("poopy")
+    response.status(404).send(`Hello World`)
   }
 };
