@@ -1,7 +1,10 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default (request: VercelRequest, response: VercelResponse) => {
-  const json = request.method == "POST" ? request.body : "Hello World"
-  console.log(json)
-  response.status(200).send(json)
+  let qry = request.query["name"]
+  if (typeof qry === "string") {
+    response.status(200).send(`Hello ${qry}`)
+  } else {
+    response.status(404).send("poopy")
+  }
 };
