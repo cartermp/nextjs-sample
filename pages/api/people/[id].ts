@@ -3,7 +3,23 @@ import { VercelRequest, VercelResponse } from '@vercel/node'
 import { people } from './../data'
 import { requestTracer } from '../../../instrumentation-setup/lambda-wrapper'
 
-const handler = (request: VercelRequest, response: VercelResponse) => {
+const handleRequest = (request: VercelRequest, response: VercelResponse) => {
+    const id = request.query["id"]
+    if (typeof id !== "string") {
+        response.status(404).send(`Bad request: ${request.query}`)
+        return
+    }
+
+    const filtered = people.filter(p => p.id === id)
+    if (!filtered.length) {
+        response.status(404).send(`Bad ID: ${id}`)
+        return
+    }
+
+    response.status(200).send(filtered)
+}
+
+const personHandler = (request: VercelRequest, response: VercelResponse) => {
     requestTracer.startActiveSpan('request', span => {
         span.setStatus({
           code: SpanStatusCode.OK,
@@ -18,19 +34,7 @@ const handler = (request: VercelRequest, response: VercelResponse) => {
         })
     
         try {
-            const id = request.query["id"]
-            if (typeof id !== "string") {
-                response.status(404).send(`Bad request: ${request.query}`)
-                return
-            }
-        
-            const filtered = people.filter(p => p.id === id)
-            if (!filtered.length) {
-                response.status(404).send(`Bad ID: ${id}`)
-                return
-            }
-        
-            response.status(200).send(filtered);
+            handleRequest(request, response)
         } catch (error) {
           span.setStatus({
             code: SpanStatusCode.ERROR,
@@ -42,4 +46,4 @@ const handler = (request: VercelRequest, response: VercelResponse) => {
       })
 };
 
-export default handler
+export default personHandler
