@@ -33,9 +33,15 @@ function PersonPage({ person }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          {`This is the page of ${person.id}`}
-        </h1>
+        <h1 className={styles.title}>{person.name}</h1>
+
+        <ul>
+          <li>{`Height: ${person.height}cm`}</li>
+          <li>{`Mass: ${person.mass}kg`}</li>
+          <li>{`Hair color: ${person.hair_color}`}</li>
+          <li>{`Skin color: ${person.skin_color}`}</li>
+          <li>{`Eye color: ${person.eye_color}`}</li>
+        </ul>
       </main>
 
       <footer className={styles.footer}>
