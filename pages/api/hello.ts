@@ -1,6 +1,6 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default (request: VercelRequest, response: VercelResponse) => {
+const helloHandler = (request: VercelRequest, response: VercelResponse) => {
   let qry = request.query["name"]
   if (typeof qry === "string") {
     response.status(200).send(`Hello ${qry}`)
@@ -8,3 +8,5 @@ export default (request: VercelRequest, response: VercelResponse) => {
     response.status(404).send(`Hello World`)
   }
 };
+
+export default helloHandler

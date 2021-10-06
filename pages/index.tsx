@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,9 +22,9 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="./people" className={styles.card}>
+            <h2>People &rarr;</h2>
+            <p>Click this shit to talk to some peeps.</p>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
@@ -67,3 +67,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
