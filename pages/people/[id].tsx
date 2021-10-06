@@ -2,10 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
 import { Person } from '../api/data'
+import axios from 'axios'
 
 export const getStaticPaths = async() => {
-  const res = await fetch('https://nextjs-sample-lake.vercel.app/api/people')
-  const people: Person[] = await res.json()
+  const res = await axios.get<Person[]>('https://nextjs-sample-lake.vercel.app/api/people')
+  const people = res.data
   const paths = people.map(p => ({ params: { id: p.id } }))
   return {
     paths,
@@ -23,7 +24,7 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
-function PersonPage({ person }) {
+const PersonPage = ({ person }) => {
   return (
     <div className={styles.container}>
       <Head>

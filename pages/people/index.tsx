@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.css'
+import axios from 'axios'
+import { Person }  from '../api/data'
 
 export const getStaticProps = async () => {
-  const res = await fetch('https://nextjs-sample-lake.vercel.app/api/people')
-  const people = await res.json()
+  const res = await axios.get<Person[]>('https://nextjs-sample-lake.vercel.app/api/people')
+  const people = res.data
   return {
     props: {
       people,
@@ -12,7 +14,7 @@ export const getStaticProps = async () => {
   }
 }
 
-function People({ people }) {
+const PeoplePage = ({ people }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -56,4 +58,4 @@ function People({ people }) {
   )
 }
 
-export default People
+export default PeoplePage
