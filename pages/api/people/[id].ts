@@ -10,13 +10,13 @@ const handleRequest = (request: VercelRequest, response: VercelResponse) => {
         return
     }
 
-    const filtered = people.filter(p => p.id === id)
-    if (!filtered.length) {
+    const person = people.find(p => p.id === id)
+    if (!person) {
         response.status(404).send(`Bad ID: ${id}`)
         return
     }
 
-    response.status(200).send(filtered)
+    response.status(200).send(person)
 }
 
 const personHandler = (request: VercelRequest, response: VercelResponse) => {
