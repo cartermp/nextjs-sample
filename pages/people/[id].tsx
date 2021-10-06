@@ -15,8 +15,8 @@ export const getStaticPaths = async() => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`https://nextjs-sample-lake.vercel.app/api/people/${params.id}`)
-  const person: Person = await res.json()
+  const res = await axios.get<Person>(`https://nextjs-sample-lake.vercel.app/api/people/${params.id}`)
+  const person = res.data
   return {
     props: {
       person,
