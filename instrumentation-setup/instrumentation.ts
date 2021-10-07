@@ -3,13 +3,13 @@ import opentelemetry from '@opentelemetry/api'
 import { Metadata, credentials } from '@grpc/grpc-js'
 import { CollectorTraceExporter } from '@opentelemetry/exporter-collector-grpc'
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
-import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base'
+import { SimpleSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base'
 
 const metadata = new Metadata()
 metadata.set('x-honeycomb-team', process.env.HNY_KEY);
 metadata.set('x-honeycomb-dataset', process.env.VERCEL_SAMPLE_DATASET);
 const traceExporter = new CollectorTraceExporter({
-  url: 'grpc://https://api-dogfood.honeycomb.io/',
+  url: 'grpc://api-dogfood.honeycomb.io/',
   credentials: credentials.createSsl(),
   metadata
 });

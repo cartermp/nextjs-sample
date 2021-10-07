@@ -5,7 +5,7 @@ import { Person } from '../api/data'
 import axios from 'axios'
 
 export const getStaticPaths = async() => {
-  const res = await axios.get<Person[]>('https://nextjs-sample-lake.vercel.app/api/people')
+  const res = await axios.get<Person[]>(`${process.env.API_ENDPOINT}/people`)
   const people = res.data
   const paths = people.map(p => ({ params: { id: p.id } }))
   return {
@@ -15,7 +15,7 @@ export const getStaticPaths = async() => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const res = await axios.get<Person>(`https://nextjs-sample-lake.vercel.app/api/people/${params.id}`)
+  const res = await axios.get<Person>(`${process.env.API_ENDPOINT}/people/${params.id}`)
   const person = res.data
   return {
     props: {

@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Person }  from '../api/data'
 
 export const getStaticProps = async () => {
-  const res = await axios.get<Person[]>('https://nextjs-sample-lake.vercel.app/api/people')
+  const res = await axios.get<Person[]>(`${process.env.API_ENDPOINT}/people`)
   const people = res.data
   return {
     props: {
