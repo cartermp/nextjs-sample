@@ -1,7 +1,7 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import { people } from './../data'
-import { requestTracer } from '../../../instrumentation-setup/lambda-wrapper'
+import { requestTracer } from '../../../instrumentation-setup/instrumentation'
 
 const peopleHanlder = (request: VercelRequest, response: VercelResponse) => {
     requestTracer.startActiveSpan('request', span => {
