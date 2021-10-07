@@ -1,7 +1,7 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import { people } from './../data'
-import { requestTracer } from '../../../instrumentation-setup/instrumentation'
+import { requestTracer } from '../../../instrumentation-setup/functions-instrumentation'
 
 const handleRequest = (request: VercelRequest, response: VercelResponse) => {
     const id = request.query["id"]
