@@ -5,8 +5,7 @@ export type Person = {
   mass: string,
   hair_color: string,
   skin_color: string,
-  eye_color: string,
-  gender: string,
+  eye_color: string
 }
 
 export const people: Person[] = [
@@ -17,8 +16,7 @@ export const people: Person[] = [
       mass: '77',
       hair_color: 'blond',
       skin_color: 'fair',
-      eye_color: 'blue',
-      gender: 'male',
+      eye_color: 'blue'
     },
     {
       id: '2',
@@ -27,8 +25,7 @@ export const people: Person[] = [
       mass: '75',
       hair_color: 'n/a',
       skin_color: 'gold',
-      eye_color: 'yellow',
-      gender: 'n/a',
+      eye_color: 'yellow'
     },
     {
       id: '3',
@@ -37,8 +34,7 @@ export const people: Person[] = [
       mass: '32',
       hair_color: 'n/a',
       skin_color: 'white, blue',
-      eye_color: 'red',
-      gender: 'n/a',
+      eye_color: 'red'
     },
     {
       id: '4',
@@ -47,8 +43,7 @@ export const people: Person[] = [
       mass: '136',
       hair_color: 'none',
       skin_color: 'white',
-      eye_color: 'yellow',
-      gender: 'male',
+      eye_color: 'yellow'
     },
     {
       id: '5',
@@ -57,8 +52,7 @@ export const people: Person[] = [
       mass: '49',
       hair_color: 'brown',
       skin_color: 'light',
-      eye_color: 'brown',
-      gender: 'female',
+      eye_color: 'brown'
     },
     {
       id: '6',
@@ -67,8 +61,7 @@ export const people: Person[] = [
       mass: '120',
       hair_color: 'brown, grey',
       skin_color: 'light',
-      eye_color: 'blue',
-      gender: 'male',
+      eye_color: 'blue'
     },
     {
       id: '7',
@@ -77,8 +70,7 @@ export const people: Person[] = [
       mass: '75',
       hair_color: 'brown',
       skin_color: 'light',
-      eye_color: 'blue',
-      gender: 'female',
+      eye_color: 'blue'
     },
     {
       id: '8',
@@ -87,8 +79,7 @@ export const people: Person[] = [
       mass: '32',
       hair_color: 'n/a',
       skin_color: 'white, red',
-      eye_color: 'red',
-      gender: 'n/a',
+      eye_color: 'red'
     },
     {
       id: '9',
@@ -97,8 +88,7 @@ export const people: Person[] = [
       mass: '84',
       hair_color: 'black',
       skin_color: 'light',
-      eye_color: 'brown',
-      gender: 'male',
+      eye_color: 'brown'
     },
     {
       id: '10',
@@ -107,7 +97,6 @@ export const people: Person[] = [
       mass: '77',
       hair_color: 'auburn, white',
       skin_color: 'fair',
-      eye_color: 'blue-gray',
-      gender: 'male',
-    },
+      eye_color: 'blue-gray'
+    }
   ]
