@@ -36,7 +36,7 @@ const PeoplePage = ({ people }) => {
           {people.map((p) => (
             <a key={p.id} href={`./people/${p.id}`} className={styles.card}>
               <h2>{p.name} &rarr;</h2>
-              <p>Click this shit to get more info on {p.name}!</p>
+              <p>Click this stuff to get more info on {p.name}!</p>
             </a>
           ))}
         </div>
