@@ -11,7 +11,7 @@ const metadata = new Metadata()
 metadata.set('x-honeycomb-team', process.env.HNY_KEY);
 metadata.set('x-honeycomb-dataset', process.env.VERCEL_SAMPLE_DATASET);
 const traceExporter = new CollectorTraceExporter({
-  url: 'grpc://api-dogfood.honeycomb.io/',
+  url: process.env.HNY_ENDPOINT,
   credentials: credentials.createSsl(),
   metadata
 });
