@@ -7,24 +7,22 @@ import { SimpleSpanProcessor, ConsoleSpanExporter } from '@opentelemetry/sdk-tra
 import { Resource } from '@opentelemetry/resources'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 
-const HNY_KEY = process.env.HNY_KEY
-const VERCEL_SAMPLE_DATASET = process.env.VERCEL_SAMPLE_DATASET
-const SERVICE_NAME = process.env.PEOPLE_SERVICE
-
 const metadata = new Metadata()
-metadata.set('x-honeycomb-team', HNY_KEY);
-metadata.set('x-honeycomb-dataset', VERCEL_SAMPLE_DATASET);
+metadata.set('x-honeycomb-team', process.env.HNY_KEY);
+metadata.set('x-honeycomb-dataset', process.env.VERCEL_SAMPLE_DATASET);
 const traceExporter = new CollectorTraceExporter({
   url: 'grpc://api-dogfood.honeycomb.io/',
   credentials: credentials.createSsl(),
   metadata
 });
 
-const provider = new NodeTracerProvider({
+{
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: `${SERVICE_NAME}`,
+    [SemanticResourceAttributes.SERVICE_NAME]: process.env.PEOPLE_SERVICE,
   }),
-});
+}
+
+const provider = new NodeTracerProvider();
 provider.addSpanProcessor(new SimpleSpanProcessor(traceExporter))
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()))
 provider.register();
