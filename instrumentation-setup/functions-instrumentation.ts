@@ -18,11 +18,12 @@ const traceExporter = new CollectorTraceExporter({
 
 const provider = new NodeTracerProvider({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: process.env.PEOPLE_SERVICE,
-  }),
-});
+    [SemanticResourceAttributes.SERVICE_NAME]: `${process.env.PEOPLE_SERVICE}`
+  })
+})
+
 provider.addSpanProcessor(new SimpleSpanProcessor(traceExporter))
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()))
-provider.register();
+provider.register()
 
 export const requestTracer = opentelemetry.trace.getTracer('request-tracer')
