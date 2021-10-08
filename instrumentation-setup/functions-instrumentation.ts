@@ -19,7 +19,7 @@ const traceExporter = new CollectorTraceExporter({
 
 const provider = new NodeTracerProvider({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: `${process.env.PEOPLE_SERVICE}`
+    [SemanticResourceAttributes.SERVICE_NAME]: process.env.PEOPLE_SERVICE
   })
 })
 
