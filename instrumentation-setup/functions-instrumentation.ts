@@ -16,11 +16,11 @@ const traceExporter = new CollectorTraceExporter({
   metadata
 });
 
-{
-  resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: process.env.PEOPLE_SERVICE,
-  }),
-}
+// {
+//   resource: new Resource({
+//     [SemanticResourceAttributes.SERVICE_NAME]: process.env.PEOPLE_SERVICE,
+//   }),
+// }
 
 const provider = new NodeTracerProvider();
 provider.addSpanProcessor(new SimpleSpanProcessor(traceExporter))
